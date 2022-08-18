@@ -1,6 +1,9 @@
 package com.tut;
 
 
+import java.util.Date;
+
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -25,13 +28,23 @@ public class App
         st.setName("Vikash");
         st.setCity("gurgaon");
         
+        //creating address of object clas
+        
+        Address adr = new Address();
+        adr.setStreet("sector 23");
+        adr.setAddedDate(new Date());
+        adr.setCity("gurgaon");
+        adr.setOpen(true);
+        adr.setX(10);
+        
         //start a session
         Session session =factory.openSession();
         
         //transaction started
         session.beginTransaction();
         //saved the object
-        session.save(st);
+        //session.save(st);
+        session.save(adr);
         //got the transaction and commited the updates
         session.getTransaction().commit();
         
