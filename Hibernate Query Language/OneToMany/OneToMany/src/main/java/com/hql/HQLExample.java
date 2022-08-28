@@ -1,8 +1,9 @@
 package com.hql;
 
+import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.Query;
+import org.hibernate.query.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,7 +23,7 @@ public class HQLExample {
 		
 		String query = "from Student as s where city=:x and s.name= :n";
 		
-		Query q =  s.createQuery(query);
+		Query<Student> q =  s.createQuery(query);
 		q.setParameter("x", "Delhi");
 		q.setParameter("n", "Vikash");
 		
@@ -62,6 +63,18 @@ public class HQLExample {
 //		
 //		List<Object[]> list3 = q2.getResultList();
 //	
+		
+		
+		//----------------------------------------------------------------------------------
+		//join query
+		
+//		Query q3 =s.createQuery("select q.question, a.answer from Question q inner join q.answers a");
+//		List<Object[]> list1 = q3.getResultList();
+//		for(Object[] obj : list1) {
+//			System.out.println(Arrays.toString(obj));
+//		}
+//		
+		
 		
 		s.close();
 		factory.close();
